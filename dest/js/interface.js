@@ -49,5 +49,9 @@ $(function(){
 }(jQuery));
 
 $(document).ready(function(){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 221fe90299d5100ad6be490f74ba7e4f1ae06b93
 	
 });
