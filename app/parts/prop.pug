@@ -1,0 +1,9 @@
+mixin prop(name,values)
+	.prop
+		.prop__wrap
+			.prop__left
+				.prop__name= name
+			.prop__value
+				each val,index in values
+					.prop__value-el= val
+					
