@@ -22,7 +22,7 @@ gulp.task('pug',function () {
 });
 gulp.task('serve',['less'],function(){
     browserSync.init({
-        server:"."
+        server:"./dest"
     });
     gulp.watch("./app/less/*.less",['less']);
     gulp.watch("./app/*.pug",['pug']).on("change",browserSync.reload);;
