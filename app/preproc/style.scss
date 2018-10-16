@@ -1,9 +1,4 @@
 
-@import "fonts.less";
-@import(less) "commons.less";
-@import(css) "normalize.css";
-
-
 *{
 	box-sizing: border-box;
 	margin: 0;
@@ -17,6 +12,7 @@ a{
 }
 html{
 	height: 100%;
+    font-size: 12px;
 }
 body{
 	max-width: 1920px;
@@ -28,7 +24,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-
+    font-size: 1em;
 }
 .wrapper{
 	flex:1 0 auto;
