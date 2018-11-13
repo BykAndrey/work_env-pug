@@ -1,3 +1,7 @@
-.bread.container
-	a.bread__item(href="#") Главная
-	a.bread__item(href="#") Страница
+﻿mixin bread(items)
+	.bread.container
+		a.bread__item(href="#") Главная
+		-for(var i=0;i<=items.length-1;i++){
+			a.bread__item(href="#")=items[i];
+		-}
+		

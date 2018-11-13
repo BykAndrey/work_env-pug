@@ -10,6 +10,38 @@
 a{
 	text-decoration: none;
 }
+.prop{
+	font-size:1em;
+	position: relative;;
+	&:after{
+		position: absolute;
+		content: '';
+		width: 100%;
+		border-bottom: 1px dotted $grey;
+		bottom: 1px;
+	}
+	&__wrap{
+		display: flex;
+		justify-content: space-between;
+	}
+	&__left{
+		flex:1 0 auto;
+	}
+	&__name{
+		position: relative;
+		z-index: 1;
+		display: inline-block;
+		background: white;
+	}
+	&__value{
+		background: white;
+		position: relative;
+		z-index: 1;
+	}
+}
+
+
+
 html{
 	height: 100%;
     font-size: 12px;
