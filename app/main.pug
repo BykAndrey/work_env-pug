@@ -1,14 +1,12 @@
 doctype html
 html(lang="ru")
+	include parts/mixins.pug
 	include parts/head.pug
+	include parts/bread.pug
 	body
 		.wrapper
 			include parts/header.pug
 			block middle
-			
 		include parts/footer.pug
 		include parts/popups.pug
-
 		include parts/scripts.pug
-		
-
