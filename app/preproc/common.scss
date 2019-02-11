@@ -1,0 +1,69 @@
+.c-btn{
+	display: inline-block;
+	background: #7c6e4c;
+	border:1px solid #7c6e4c;
+	color:white;
+	font-weight: 700;
+	font-size:1.4em;
+	padding:11px 0 10px;
+	flex:0 1 em(200px,14px);
+
+	text-align: center;
+    transition-duration: 0.3s;
+    cursor: pointer;
+	&:hover{
+		background: transparent;
+	}
+	&--invert{
+		background: transparent;
+		&:hover{
+			background: #7c6e4c;
+		}
+	}
+}
+
+.c-input{
+	font-size:1.4em;
+	color:#69392e;
+	text-indent: 1.5rem;
+	height:em(34px,14px);
+	min-width: 0;
+	border:1px solid #e7c8c5;
+	transition-duration: 0.3s;
+	&:focus{
+		border-color:#69392e;
+		
+	}
+}
+.text-content{
+	color:white;
+	font-size: 1.4em;
+	line-height: em(20px,14px);
+	p:not(:last-child){
+		margin-bottom: em(23px,14px);
+
+	}
+	/*ol ul*/
+	ul,ol{
+		padding-left: em(20px,14px);
+	}
+	ul{
+		li{
+			list-style: none;
+			position: relative;
+			&:before{
+				content: '';
+				
+				position: absolute;
+				top:em(10px,14px);
+				left:em(-20px,14px);
+
+
+				height: 1px;
+				width: em(12px,14px);
+				background: #69392e;
+			}
+		}
+	}
+		/*/ol ul*/
+}
