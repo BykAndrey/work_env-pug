@@ -5,6 +5,7 @@ var gulp =require ('gulp'),
 	//pref =require('autoprefixer'),
 	browserSync=require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer');
+//const concat = require('concat');
 var LessPluginAutoPrefix = require('less-plugin-autoprefix'),
     autoprefixPlugin = new LessPluginAutoPrefix({browsers: ["last 18 versions"]});
 
@@ -21,8 +22,9 @@ var LessPluginAutoPrefix = require('less-plugin-autoprefix'),
     var cssnext=require('postcss-cssnext');
     var autoprefixer=require('autoprefixer');
     var precss=require('precss');
-    var cpncat=require('gulp-concat');
-
+    var concat=require('gulp-concat');
+    const sourcemaps = require('gulp-sourcemaps');
+    const babel = require('gulp-babel');
     var   preproc=[
  
         precss,
@@ -36,11 +38,11 @@ var LessPluginAutoPrefix = require('less-plugin-autoprefix'),
         }),
 
          ];
-         gulp.task('components', () => {
+       /*  gulp.task('components', () => {
             //    const postcss    = require('gulp-postcss')
                 //const sourcemaps = require('gulp-sourcemaps')
               
-                return gulp.src(['./app/**/*.scss',"!./app/preproc/*.scss"])
+                return gulp.src(['..scss',"!./app/preproc/*.scss"])
                     .pipe(sass().on('error', sass.logError))
                 //  .pipe( sourcemaps.init() )
                   .pipe( postcss(preproc) )
@@ -48,12 +50,10 @@ var LessPluginAutoPrefix = require('less-plugin-autoprefix'),
                   .pipe( gulp.dest('./dest') )
                   .pipe(browserSync.reload({stream:true}));
             
-              })
+              })*/
     gulp.task('globalcss', () => {
-      
-                  
-                    return gulp.src(['./app/preproc/*.scss'])
-                        .pipe(sass().on('error', sass.logError))
+        return gulp.src(['./app/preproc/*.scss'])
+            .pipe(sass().on('error', sass.logError))
                     //  .pipe( sourcemaps.init() )
                       .pipe( postcss(preproc) )
                      // .pipe( sourcemaps.write('.') )
@@ -61,11 +61,32 @@ var LessPluginAutoPrefix = require('less-plugin-autoprefix'),
                       .pipe(browserSync.reload({stream:true}));
                 
                   })
-
-
-
-
-
+        
+gulp.task('js-plug',()=>{
+    return gulp.src([
+        './app/js/slick.min.js',
+        './app/js/jq.touch.min.js',
+        './app/js/loadimg.js',
+        './app/js/youtube.js',
+        './app/js/jquery.magnific-popup.min.js',
+        './app/js/objectfit.js',
+    ])
+    .pipe(concat('plugins.js'))
+    .pipe(gulp.dest('./dest/js/'));
+})
+gulp.task('js-index',()=>{
+    return gulp.src([
+        //'./app/js/map.js',
+        './app/js/interface.js'
+    ])
+    .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+    .pipe(concat('index.js'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./dest/js/'));
+})
 gulp.task('pug',function () {
 	return gulp.src('./app/**/*.pug')
 	.pipe(pug({
@@ -73,16 +94,15 @@ gulp.task('pug',function () {
 	}))
 	.pipe(gulp.dest('./dest'));
 });
-gulp.task('serve',['globalcss','components'],function(){
+gulp.task('serve',['globalcss'],function(){
     browserSync.init({
         server:"./dest"
     });
- //   gulp.watch("./app/preproc/*.less",['less']);
-   // gulp.watch("./app/preproc/*.scss",['scss']);
-   gulp.watch("./app/components/**/*.scss",['components']);
-   gulp.watch("./app/preproc/*.scss",['globalcss']);
-    gulp.watch("./app/**/*.pug",['pug'])//.on("change",browserSync.reload);;
-   // gulp.watch("./app/parts/*.pug",[]);//.on("change",browserSync.reload);;
+
+    gulp.watch("./app/js/*.js",['js-plug']);
+    gulp.watch("./app/js/*.js",['js-index']);
+    gulp.watch("./app/preproc/*.scss",['globalcss']);
+    gulp.watch("./app/**/*.pug",['pug']);
     gulp.watch("./dest/*.html").on("change",browserSync.reload);
 
 });
