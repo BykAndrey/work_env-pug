@@ -1,38 +1,75 @@
+@import 'config.scss';
 .c-btn{
 	display: inline-block;
-	background: #7c6e4c;
-	border:1px solid #7c6e4c;
+	background: $color;
+	border:1px solid $color;
 	color:white;
-	font-weight: 700;
+	border-radius: 3px;
+	font-weight: 400;
 	font-size:1.4em;
-	padding:11px 0 10px;
+	padding:em(16px,14px) 1em em(16px,14px);
 	flex:0 1 em(200px,14px);
 
 	text-align: center;
-    transition-duration: 0.3s;
-    cursor: pointer;
+	transition-duration: 0.3s;
+	text-transform: uppercase;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	/*&:after{
+		content: '';
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		top:0;
+		left:0;
+		background: rgba(255,255,255,0.2);
+		transform: rotate(25deg) translate(50%,-250%);
+		transition-duration: 0.3s;
+	}*/
 	&:hover{
-		background: transparent;
+		background: rgba(255,255,255,0.2);
+		color:$color;
+		&:after{
+			transform: none;
+		}
 	}
 	&--invert{
 		background: transparent;
 		&:hover{
-			background: #7c6e4c;
+			color:white;
+			background: $color;
+		}
+	}
+	&--attantion{
+		background: $attantion;
+		border-color: $attantion;
+		&:hover{
+			color:$attantion;
+		}
+	}
+	&--warning{
+		background: $warning;
+		border-color: $warning;
+		&:hover{
+			color:$warning;;
 		}
 	}
 }
 
 .c-input{
 	font-size:1.4em;
-	color:#69392e;
-	text-indent: 1.5rem;
-	height:em(34px,14px);
+	color:#808080;
+	text-indent: 2.5rem;
+
 	min-width: 0;
-	border:1px solid #e7c8c5;
+	
 	transition-duration: 0.3s;
+	height: em(50px,14px);
+	border:1px solid $color;
+	border-radius: 3px;
 	&:focus{
-		border-color:#69392e;
-		
+		border-color:$warning;
 	}
 }
 .text-content{
@@ -40,7 +77,7 @@
 	font-size: 1.4em;
 	line-height: em(20px,14px);
 	p:not(:last-child){
-		margin-bottom: em(23px,14px);
+		margin-bottom: em(14px,14px);
 
 	}
 	/*ol ul*/
@@ -66,4 +103,12 @@
 		}
 	}
 		/*/ol ul*/
+	h1, h2,h3,h4,h5,h6{
+		&:not(:first-child){
+			margin-top: 1.5em;
+		}
+		&:not(:last-child){
+			margin-top: .5em;
+		}
+	}
 }
