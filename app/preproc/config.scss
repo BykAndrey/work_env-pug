@@ -29,3 +29,26 @@ $base-pad:3rem;
 $color:#0057ff;
 $attantion:#ffcd00;;
 $warning:#ff181f;
+
+$xl:1200px;
+$lg:992px;
+$md:768px;
+$sm:576px;
+
+@mixin below($width) {
+  @media screen and (max-width: $width - 1) {
+    @content;
+  }
+}
+
+@mixin above($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin between($minWidth, $maxWidth) {
+  @media screen and (min-width: $minWidth) and (max-width: $maxWidth) {
+    @content;
+  }
+}
