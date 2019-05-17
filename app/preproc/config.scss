@@ -1,26 +1,31 @@
 $browser-context: 16; // Default
-
 @function em($pixels, $context: $browser-context) {
   @return #{$pixels/$context}em;
 }
-$base-pad:3rem;
+@function rem($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}rem;
+}
 
+$base-pad:3rem;
 @function col($count,$margin:$base-pad){
   $size:100%/$count;
   @return calc(#{$size} - #{$margin});
 }
-
 @mixin listel($colmar){
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-
   margin-left: -#{$colmar};
 }
 @mixin col($count,$colmar){
   width:col($count,$colmar);
   margin-left: $colmar;
 }
+
+
+
+
+
 $color:#0057ff;
 $attantion:#ffcd00;;
 $warning:#ff181f;

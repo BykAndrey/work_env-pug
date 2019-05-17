@@ -1,51 +1,18 @@
-
+@import 'config.scss';
+@import 'common.scss';
 *{
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-
 	outline: none;
-
 }
-$grey:grey;
 a{
 	text-decoration: none;
 }
-.prop{
-	font-size:1em;
-	position: relative;;
-	&:after{
-		position: absolute;
-		content: '';
-		width: 100%;
-		border-bottom: 1px dotted $grey;
-		bottom: 1px;
-	}
-	&__wrap{
-		display: flex;
-		justify-content: space-between;
-	}
-	&__left{
-		flex:1 0 auto;
-	}
-	&__name{
-		position: relative;
-		z-index: 1;
-		display: inline-block;
-		background: white;
-	}
-	&__value{
-		background: white;
-		position: relative;
-		z-index: 1;
-	}
-}
-
 
 
 html{
 	height: 100%;
-    font-size: 12px;
 }
 body{
 	max-width: 1920px;
@@ -57,7 +24,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	height: 100%;
-    font-size: 1em;
+    font-size: 1rem;
 }
 .wrapper{
 	flex:1 0 auto;
@@ -70,53 +37,11 @@ body{
 	width: 100%;
 	padding: 0px 15px;
 	margin: 0 auto;
-	//background: red;
 }
-fieldset{
-	padding: 10px;
-}
-.c-input{
-	border:1px solid;
-	position: relative;
-	//background: red;
-	display: block;
-	margin-top: 15px;
 
-	$c:&;
-	&__value{
-		
-		display: block;
-		border:none;
-		background: transparent;
-		width: 100%;
-		display: block;
-		position: relative;
-		z-index: 1;
-		font-size:14px;
-		text-indent: 10px;
-		&:placeholder-shown + #{$c}__label{
-			color:red;
-			font-size: 14px;
-			line-height: 1em;
-			transform: translateY(50%);
-		}
-
-	
-	}
-	&__label{
-		padding: 0 10px;
-		display: inline-lock;
-		background: white;
-		display: block;
-	//	width: 100%;
-		position: absolute;
-		top:0%;
-		left:10px;
-		//bottom: 0;
-		transform: translateY(-70%);
-		font-size: 10px;
-		transition-duration: 0.3s;
-		
+h1{
+	font-size: rem(25);
+	span{
+		font-size: em(20px,25px)
 	}
 }
-
